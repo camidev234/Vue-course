@@ -14,6 +14,5 @@
             }
             return {counter, addCounter}
         }
-
     })
 </script>

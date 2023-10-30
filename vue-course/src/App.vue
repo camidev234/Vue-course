@@ -1,18 +1,16 @@
 <template>
-  <CounterOption />  
-  <CounterComposition />
+  <ExampleForObj />
 </template>
 
 
 <script setup lang="ts">
-  import CounterOption from './components/CounterOption.vue';
-  import CounterComposition from './components/CounterComposition.vue';
+import ExampleForObj from './components/ExampleForObj.vue';
 </script>
 
 
 
 <style scoped>
-  h1 {
-    color: green;
-  }
+h1 {
+  color: green;
+}
 </style>
