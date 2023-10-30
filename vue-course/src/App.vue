@@ -1,10 +1,10 @@
 <template>
-  <ExampleForObj />
+  <ClassBind />
 </template>
 
 
 <script setup lang="ts">
-import ExampleForObj from './components/ExampleForObj.vue';
+import ClassBind from './components/ClassBind.vue';
 </script>
 
 
