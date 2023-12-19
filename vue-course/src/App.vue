@@ -1,10 +1,11 @@
 <template>
   <h1>This is a list of posts</h1>
-  <PostsContainer/>
+  <CounterOption/>
 </template>
 
 <script lang="ts" setup>
-import PostsContainer from './components/PostsContainer.vue';
+import CounterOption from './components/CounterOption.vue';
+
 
 </script>
 
