@@ -1,9 +1,10 @@
 <template>
-  <ConditionalRender/>
+  <ExampleFor/>
 </template>
 
 <script lang="ts" setup>
-import ConditionalRender from './components/ConditionalRender.vue';
+import ExampleFor from './components/ExampleFor.vue';
+
 </script>
 
 <style>
