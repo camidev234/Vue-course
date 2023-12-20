@@ -1,9 +1,9 @@
 <template>
-  <ExampleFor/>
+  <StyleBind/>
 </template>
 
 <script lang="ts" setup>
-import ExampleFor from './components/ExampleFor.vue';
+import StyleBind from './components/StyleBind.vue';
 
 </script>
 
