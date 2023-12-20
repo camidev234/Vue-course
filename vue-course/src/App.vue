@@ -1,11 +1,9 @@
 <template>
-  <h1>This is a list of posts</h1>
-  <CounterSetup/>
+  <ConditionalRender/>
 </template>
 
 <script lang="ts" setup>
-  import CounterSetup from './components/CounterSetup.vue';
-
+import ConditionalRender from './components/ConditionalRender.vue';
 </script>
 
 <style>
