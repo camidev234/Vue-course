@@ -1,11 +1,10 @@
 <template>
   <h1>This is a list of posts</h1>
-  <CounterOption/>
+  <CounterSetup/>
 </template>
 
 <script lang="ts" setup>
-import CounterOption from './components/CounterOption.vue';
-
+  import CounterSetup from './components/CounterSetup.vue';
 
 </script>
 
