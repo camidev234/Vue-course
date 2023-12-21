@@ -17,7 +17,7 @@ export default defineComponent({
   name: "StyleBind",
   setup() {
     let color = ref("#fff");
-    const handleClick = () => (color.value = "black");
+    const handleClick = () => color.value = "black";
     
     return { color, handleClick };
   },
