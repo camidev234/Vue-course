@@ -1,9 +1,14 @@
 <template>
+    <!-- Import the CDN to use the icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <section class="container">
     <section class="createTeacher">
         <h3>Add Teacher</h3>
         <div class="contForm">
+        <!-- In each input the value is assigned to the object in the logic
+        in this case is to teacher and his properties for example
+        teacher.teacherName = input
+        -->
         <div>
             <Label>Name:</Label> <input type="text" v-model="teacher.teacherName">
         </div>
@@ -15,21 +20,27 @@
         </div>
         <div>
             <Label>Subjects:</Label> 
-            <input type="text" v-model="subject"><br><br>
+                <!-- Since the teacher has many subjects, the value is assigned to the variable subject -->
+                <input type="text" v-model="subject"><br><br>
+                <!-- When the button is clicked, subject is add to arrays of subjects who belongs to teacher -->
             <button @click="addSubject">Add subject</button>
         </div>
         <div>
+            <!-- When the button Add subject is click, the subject is show in the span -->
+            <!-- Itering the teacher subjects, use the key index cause each subject has not a primary key or unique data  -->
             <span v-for="(subj, index) in teacher.subjects" :key="index">{{ subj }}, </span>
         </div>
         <div class="checkbox-container">
             <input type="checkbox" id="fullDocumentation" v-model="teacher.doc">
             <label for="fullDocumentation">Full Documentation</label>
         </div>
+        <!-- Creating a new teacher and add this teacher om the teachers array -->
         <button @click="addTeacher">Add Teacher</button>
         </div>
     </section>
 
     <section class="teachers">
+        <!-- Show the teachers -->
         <h3>All Teachers: {{ totalTeachers }}</h3>
 
         <table>
@@ -44,18 +55,23 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Itering the teachers using like pk the document of each element -->
                 <tr v-for="elem in teachers" :key="elem.document">
                     <td>{{ elem.teacherName }}</td>
                     <td>{{ elem.surname }}</td>
                     <td>{{ elem.document }}</td>
                     <td>
                         <ul>
+                            <!-- Showing the teacher's subjects -->
                             <li v-for="(item, index) in elem.subjects" :key="index">{{ item }}</li>
                         </ul>
                     </td>
+                    <!-- Validate the status of the checkbox -->
                     <td v-if="elem.doc == false">No checked</td>
                     <td v-else>Checked</td>
                     <td>
+                        <!-- Using a function to delete a teacher from the list and from the array
+                        this function using the elem to find the element to delete -->
                         <button @click="deleteTeacher(elem)">Delete <i class="bi bi-trash-fill"></i></button>
                     </td>
                 </tr>
@@ -68,6 +84,9 @@
 <script lang="ts" setup>
     import { Ref, ref, computed } from 'vue';
 
+    // creating the interfaces to typing the data of each object
+
+    // in this case is the data of the teacher object
     interface Iteacher {
         teacherName: string,
         surname: string,
@@ -76,7 +95,10 @@
         doc: boolean
     }
 
+    // here's the object that uses the previous interface. 
+    // it's a Ref of Iteacher.
     let teacher:Ref<Iteacher> = ref({
+        // each property has a the value of the input that has the v-model using the same property
         teacherName : '',
         surname: '',
         document: '',
@@ -85,18 +107,27 @@
     })
 
 
-
+    // the array of teachers is a Ref to Array and use the interface Iteacher
     let teachers:Ref<Array<Iteacher>> = ref([]);
 
+    // the subject has a value of the input that use the varaible in v-model
     let subject:Ref<string> = ref('');
 
+    // when the button is clicked
     const addSubject = () => {
+        // the subject is added to actual value in the object of teacher and has the actual value of the input 
+        // subject
         teacher.value.subjects.push(subject.value);
+        // after, the value of the subject is void cause the user can be add another subject in his array of subjects
         subject.value = '';
     }
 
+    // when the add teacher is active:
     const addTeacher = () => {
+        // at current value of the array of teachers, is added the new teacher
         teachers.value.push({
+            // this teacher has the properties and the value of these is the actual value of the inputs because
+            // this value is assigned to properties in the object teacher 
             teacherName: teacher.value.teacherName,
             surname: teacher.value.surname,
             document: teacher.value.document,
@@ -104,6 +135,7 @@
             doc: teacher.value.doc
         });
 
+        // after the value of each propertie is reset and the user can create a new teacher
         teacher.value.teacherName = '';
         teacher.value.surname = '';
         teacher.value.document = '';
@@ -114,12 +146,19 @@
     const totalTeachers = computed(() => teachers.value.length);
 
 
+    // function to delete a teacher
+
+    // required a teacher, specify his document to find the element in the array
     const deleteTeacher = (teacher: { document: string }) => {
+        // find the index in the array of teachers when the document is similar to the parameter {teacher}
         const foundTeacherIndex = teachers.value.findIndex(
             (element) => teacher.document === element.document
         );
 
+        // if the index not is the last element in the array of teachers
+
         if (foundTeacherIndex !== -1) {
+            // that element is removed from the current value in array of teachers
             teachers.value.splice(foundTeacherIndex, 1);
         }
     };
