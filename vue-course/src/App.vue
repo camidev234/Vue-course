@@ -1,11 +1,13 @@
 <template>
-  <PostList/>
+  <UserList/>
 </template>
 
 <script lang="ts" setup>
-import PostList from './components/PostList.vue';
+import UserList from './components/UserList.vue';
 </script>
 
 <style scoped>
-
+  * {
+    font-family: sans-serif;
+  }
 </style>
