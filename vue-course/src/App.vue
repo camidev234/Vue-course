@@ -1,9 +1,13 @@
 <template>
-  <UserList/>
+  <div class="container">
+    <ComputedData/>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import UserList from './components/UserList.vue';
+import ComputedData from './components/ComputedData.vue';
+
+
 </script>
 
 <style scoped>

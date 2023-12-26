@@ -1,15 +1,30 @@
 <template>
   <div class="user-card">
-    <span class="user-info">Nombre: {{ user.name }}</span>
-    <span class="user-info">Email: {{ user.email }}</span>
-    <span class="user-info">Role: {{ user.role.name }}</span>
+    <span class="user-info">Nombre: {{ props.name }}</span>
+    <span class="user-info">Email: {{ props.user.email }}</span>
+    <span class="user-info">Role: {{ props.user.role.name }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps } from "vue";
 
-const props = defineProps(["user"]);
+const props = defineProps(['user', 'name']);
+
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+//   role: {
+//     id: number;
+//     name: string;
+//   };
+// }
+
+// const props = defineProps({
+//   user: Object as () => User,
+//   name: String,
+// });
 </script>
 
 <style scoped>

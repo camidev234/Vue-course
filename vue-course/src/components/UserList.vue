@@ -1,6 +1,6 @@
 <template>
   <div v-for="user in users.users" :key="user.id">
-      <UserDetail :user="user"/>
+      <UserDetail :user="user" :name="user.name"/>
   </div>
 </template>
 

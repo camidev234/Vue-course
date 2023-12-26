@@ -18,9 +18,6 @@
                 required: true
             },
             content: {
-                type: String,
-                required: false,
-                default: 'This post has not content'
             }
         },
         emits: ['sayHi'],
