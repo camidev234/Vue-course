@@ -1,12 +1,12 @@
 <template>
   <div>
-    <ServiceOne/>
+    <div>
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script setup>
-import ServiceOne from './components/ServiceOne.vue';
-
 </script>
 
 <style scoped>
