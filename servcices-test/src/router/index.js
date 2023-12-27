@@ -8,7 +8,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      redirect: to => {return { name: 'PostList' }}
+    },
+    {
+      path: '/posts',
+      name: 'PostList',
       component: PostListView
     },
     {
