@@ -11,9 +11,15 @@
 import { onMounted } from "vue";
 import PostService from '../services/PostService';
 
-const service = new PostService();
-    const posts = service.getPosts();
 
+// create a new PostService
+const service = new PostService();
+
+// the method getPosts is accessed
+const posts = service.getPosts();
+
+
+// when the component is mounted await the fetch of the data
 onMounted(async () => {
   await service.fetchAll();
 })
