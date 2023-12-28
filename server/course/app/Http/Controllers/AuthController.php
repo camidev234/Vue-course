@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -27,16 +28,19 @@ class AuthController extends Controller
     }
 
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
-
+            // $expiresInMinutes = config('sanctum.expiration');
+            // $token->expiresIn($expiresInMinutes);
+            $data = [
+                'access_token' => $token
+            ];
             return response()->json([
-                'user' => Auth::user(),
-                'token' => $token
+                'data' => $data
             ], 200);
         }
 
