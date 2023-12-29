@@ -8,6 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/auth">Acces</RouterLink>
+        <RouterLink to="/firebase">Firebase</RouterLink>
       </nav>
     </div>
   </header>

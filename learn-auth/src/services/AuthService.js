@@ -9,11 +9,11 @@ class AuthService {
     }
 
     getToken() {
-        return this.token;
+        return this.token.value;
     }
 
     getError() {
-        return this.error;
+        return this.error.value;
     }
 
     async login(email, password) {
@@ -35,9 +35,10 @@ class AuthService {
                 this.error.value = 'Login failed';
                 return false;
             }
+            this.token.value = response.data.data.access_token.toString();
 
-            this.token.value = response.data.access_token;
-            
+            console.log(response.status)
+
             return true;
 
         } catch (error) {
